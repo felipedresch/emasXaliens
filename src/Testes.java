@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Testes {
@@ -10,7 +9,7 @@ public class Testes {
         //iniciar o jogo
         System.out.println("Deseja começar um novo jogo ou continuar o anterior?");
         System.out.println("1: Novo Jogo       2: Continuar Jogo Salvo");
-        System.out.println("Para encerrar e salvar o jogo, informe as seguintes posições: Linha: -1    Coluna: -1");
+        System.out.println("Para encerrar e salvar o jogo, insira a linha e/ou coluna na posição -1");
         int opcao = entrada.nextInt();
 
         if (opcao == 1){
@@ -26,8 +25,10 @@ public class Testes {
         System.out.println("Fim do jogo!");
         if (t.getContEmas()<3){
             System.out.println("Aliens venceram!!!");
+            t.matrizInicial();
         }else if (t.getContAliens() == 0){
             System.out.println("Emas venceram!!!");
+            t.matrizInicial();
         }else{
             System.out.println("Estado do tabuleiro salvo.");
         }
