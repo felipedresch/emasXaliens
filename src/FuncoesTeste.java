@@ -112,7 +112,6 @@ public class FuncoesTeste {
                         System.out.println("Essa posição não contém um alienígina! Tente Novamente");
                     }
                 }else{
-                    System.out.println("jeuss");
                     salvarTabuleiro();
                     break;
                 }
@@ -133,9 +132,15 @@ public class FuncoesTeste {
                     salvarTabuleiro();
                     break;
                 }
-
             }
         }
+    }
+
+    public void moverPeca(int lAtual, int cAtual, int lNova, int cNova, String vazio, String peca){
+        tabuleiro[lNova][cNova] = peca;
+        tabuleiro[lAtual][cAtual] = vazio;
+        alienJoga = !alienJoga;
+        imprimirMatriz();
     }
 
     public void jogadaEma(int lAtual, int cAtual, int lNova, int cNova){
@@ -145,10 +150,7 @@ public class FuncoesTeste {
             if (lNova != lAtual) { //tentou mudar de linha
                 if (lNova == lAtual + 1 || lNova == lAtual - 1) {
                     if (tabuleiro[lNova][cAtual].equals(".")){
-                        tabuleiro[lNova][cNova] = "E";
-                        tabuleiro[lAtual][cAtual] = ".";
-                        alienJoga = true;
-                        imprimirMatriz();
+                        moverPeca(lAtual, cAtual, lNova, cNova, ".", "E");
                     }else{
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
@@ -159,10 +161,7 @@ public class FuncoesTeste {
             } else if (cNova != cAtual) {
                 if (cNova == cAtual + 1 || cNova == cAtual - 1) {
                     if (tabuleiro[lAtual][cNova].equals(".")){
-                        tabuleiro[lNova][cNova] = "E";
-                        tabuleiro[lAtual][cAtual] = ".";
-                        alienJoga = true;
-                        imprimirMatriz();
+                        moverPeca(lAtual, cAtual, lNova, cNova, ".", "E");
                     }else{
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
@@ -181,26 +180,16 @@ public class FuncoesTeste {
             if (lNova != lAtual) { //tentou mudar de linha
                 if (lNova == lAtual + 1 || lNova == lAtual - 1) {
                     if (tabuleiro[lNova][cAtual].equals(".")){//Moveu para um vazio
-                        //TODO abstrair esse pedaço
-                        tabuleiro[lNova][cNova] = "A";
-                        tabuleiro[lAtual][cAtual] = ".";
-                        alienJoga = false;
-                        imprimirMatriz();
+                        moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     }else{
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
                 }else if(lNova == lAtual + 2 && tabuleiro[lAtual+1][cAtual].equals(".") && tabuleiro[lNova][cAtual].equals("E")){//tentou comer
-                    tabuleiro[lNova][cNova] = "A";
-                    tabuleiro[lAtual][cAtual] = ".";
-                    alienJoga = false;
+                    moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     contEmas--;
-                    imprimirMatriz();
                 }else if(lNova == lAtual - 2 && tabuleiro[lAtual-1][cAtual].equals(".") && tabuleiro[lNova][cAtual].equals("E")){//tentou comer
-                    tabuleiro[lNova][cNova] = "A";
-                    tabuleiro[lAtual][cAtual] = ".";
-                    alienJoga = false;
+                    moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     contEmas--;
-                    imprimirMatriz();
                 }else{
                     imprimirMatriz();
                     System.out.println("Jogada inválida. Selecione outra posição!");
@@ -208,26 +197,16 @@ public class FuncoesTeste {
             } else if (cNova != cAtual) { //tentou se mover para os lados
                 if (cNova == cAtual + 1 || cNova == cAtual - 1) {
                     if (tabuleiro[lAtual][cNova].equals(".")) {
-                        tabuleiro[lNova][cNova] = "A";
-                        tabuleiro[lAtual][cAtual] = ".";
-                        alienJoga = false;
-                        imprimirMatriz();
+                        moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     }else{
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
-
                 }else if(cNova == cAtual + 2 && tabuleiro[lAtual][cAtual+1].equals(".") && tabuleiro[lAtual][cNova].equals("E")){
-                    tabuleiro[lNova][cNova] = "A";
-                    tabuleiro[lAtual][cAtual] = ".";
-                    alienJoga = false;
+                    moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     contEmas--;
-                    imprimirMatriz();
                 }else if(cNova == cAtual - 2 && tabuleiro[lAtual][cAtual-1].equals(".") && tabuleiro[lAtual][cNova].equals("E")){
-                    tabuleiro[lNova][cNova] = "A";
-                    tabuleiro[lAtual][cAtual] = ".";
-                    alienJoga = false;
+                    moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     contEmas--;
-                    imprimirMatriz();
                 }else{
                     imprimirMatriz();
                     System.out.println("Jogada inválida. Selecione outra posição!");
@@ -276,5 +255,4 @@ public class FuncoesTeste {
             System.out.println();
         }
     }
-
 }

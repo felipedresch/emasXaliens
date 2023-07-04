@@ -6,19 +6,21 @@ public class Testes {
         Scanner entrada = new Scanner(System.in);
         FuncoesTeste t = new FuncoesTeste();
 
-        //iniciar o jogo
         System.out.println("Deseja começar um novo jogo ou continuar o anterior?");
         System.out.println("1: Novo Jogo       2: Continuar Jogo Salvo");
         System.out.println("Para encerrar e salvar o jogo, insira a linha e/ou coluna na posição -1");
-        int opcao = entrada.nextInt();
 
+        int opcao = entrada.nextInt();
+        while (opcao != 1 && opcao !=2){
+            System.out.println("Opção inválida. Tente novamente: ");
+            opcao = entrada.nextInt();
+        }
         if (opcao == 1){
             t.initVariables();
             t.matrizInicial();
-        }else if (opcao == 2){
+        }else {
             t.recuperarJogo(info);
         }
-
         t.imprimirMatriz();
         t.contGame();
 
@@ -32,9 +34,6 @@ public class Testes {
         }else{
             System.out.println("Estado do tabuleiro salvo.");
         }
-
-
         Arquivo.gravar(t.salvarTabuleiro(), "meuArq.txt");//fechar
-
     }
 }
