@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Testes {
+public class Principal {
     public static void main(String[] args) throws Exception {
         String[] info = Arquivo.getLinhas("meuArq.txt");//vetor onde cada posição é uma linha da matriz
         Scanner entrada = new Scanner(System.in);
-        FuncoesTeste t = new FuncoesTeste();
+        Funcoes t = new Funcoes();
 
         System.out.println("Deseja começar um novo jogo ou continuar o anterior?");
         System.out.println("1: Novo Jogo       2: Continuar Jogo Salvo");

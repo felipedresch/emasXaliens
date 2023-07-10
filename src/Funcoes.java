@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FuncoesTeste {
+public class Funcoes {
     private final int LINHAS = 5;
     private final int COLUNAS = 4;
     private final String[][] tabuleiro = new String[LINHAS][COLUNAS];
@@ -70,7 +70,7 @@ public class FuncoesTeste {
         //return false;
     }
 
-    public boolean aliensImoveis(){ //verifica se os aliens estão cercados
+    public boolean aliensImoveis(){
         for (int l = 0; l < LINHAS; l++) {
             for (int c = 0; c < COLUNAS; c++) {
                 if (tabuleiro[l][c].equals("A")) {//ate aqui ta certo
@@ -213,7 +213,6 @@ public class FuncoesTeste {
                 }
             }
         }
-
     }
 
     public void initVariables() {
@@ -250,9 +249,13 @@ public class FuncoesTeste {
     public void imprimirMatriz() {
         for (int i = 0; i < LINHAS; i++) {
             for (int j = 0; j < COLUNAS; j++) {
+                if (j == 0) {
+                    System.out.print(i + "  ");
+                }
                 System.out.print(tabuleiro[i][j] + " ");
             }
             System.out.println();
         }
+        System.out.println("   0 1 2 3");
     }
 }
