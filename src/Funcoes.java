@@ -102,13 +102,17 @@ public class Funcoes {
                 System.out.println("Aliens jogam. Qual peça deseja mover? informe a linha e a coluna: ");
                 lAtual = entrada.nextInt();
                 cAtual = entrada.nextInt();
-                if (lAtual != -1 && cAtual != -1){
+                if (lAtual > 4 || cAtual > 3){
+                    imprimirMatriz();
+                    System.out.println("Jogada inválida, tente novamente!");
+                }else if (lAtual != -1 && cAtual != -1){
                     if (tabuleiro[lAtual][cAtual].equals("A")) { //Selecionou sua própria peça
                         System.out.println("Agora, informe a posição para a qual deseja ir: ");
                         lNova = entrada.nextInt();
                         cNova = entrada.nextInt();
                         jogadaAlien(lAtual, cAtual, lNova, cNova);
                     } else {
+                        imprimirMatriz();
                         System.out.println("Essa posição não contém um alienígina! Tente Novamente");
                     }
                 }else{
@@ -119,13 +123,17 @@ public class Funcoes {
                 System.out.println("Emas jogam. Qual peça deseja mover? informe a linha e a coluna: ");
                 lAtual = entrada.nextInt();
                 cAtual = entrada.nextInt();
-                if (lAtual != -1 && cAtual != -1){
+                if (lAtual > 4 || cAtual > 3){
+                    imprimirMatriz();
+                    System.out.println("Jogada inválida, tente novamente!");
+                }else if (lAtual != -1 && cAtual != -1){
                     if (tabuleiro[lAtual][cAtual].equals("E")) { //Selecionou uma posição válida
                         System.out.println("Agora, informe a posição para a qual deseja ir: ");
                         lNova = entrada.nextInt();
                         cNova = entrada.nextInt();
                         jogadaEma(lAtual, cAtual, lNova, cNova);
                     } else {
+                        imprimirMatriz();
                         System.out.println("Essa posição não contém uma ema! Tente Novamente");
                     }
                 }else{
@@ -144,7 +152,11 @@ public class Funcoes {
     }
 
     public void jogadaEma(int lAtual, int cAtual, int lNova, int cNova){
-        if (lNova != lAtual && cNova != cAtual) { //só pode mover a linha ou a coluna, nao os dois
+        if (lNova > 4 || cNova > 3){
+            imprimirMatriz();
+            System.out.println("Posição inexistente, Tente novamente.");
+        }else if (lNova != lAtual && cNova != cAtual) { //só pode mover a linha ou a coluna, nao os dois
+            imprimirMatriz();
             System.out.println("Jogada inválida. Selecione outra posição!");
         } else {
             if (lNova != lAtual) { //tentou mudar de linha
@@ -152,6 +164,7 @@ public class Funcoes {
                     if (tabuleiro[lNova][cAtual].equals(".")){
                         moverPeca(lAtual, cAtual, lNova, cNova, ".", "E");
                     }else{
+                        imprimirMatriz();
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
                 }else{
@@ -163,6 +176,7 @@ public class Funcoes {
                     if (tabuleiro[lAtual][cNova].equals(".")){
                         moverPeca(lAtual, cAtual, lNova, cNova, ".", "E");
                     }else{
+                        imprimirMatriz();
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
                 }else{
@@ -174,7 +188,11 @@ public class Funcoes {
     }
 
     public void jogadaAlien(int lAtual, int cAtual, int lNova, int cNova){
-        if (lNova != lAtual && cNova != cAtual) { //só pode mover a linha ou a coluna, nao os dois
+        if (lNova > 4 || cNova > 3){
+            imprimirMatriz();
+            System.out.println("Posição inexistente, Tente novamente.");
+        }else if (lNova != lAtual && cNova != cAtual) { //só pode mover a linha ou a coluna, nao os dois
+            imprimirMatriz();
             System.out.println("Jogada inválida. Selecione outra posição!");
         } else {
             if (lNova != lAtual) { //tentou mudar de linha
@@ -182,6 +200,7 @@ public class Funcoes {
                     if (tabuleiro[lNova][cAtual].equals(".")){//Moveu para um vazio
                         moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     }else{
+                        imprimirMatriz();
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
                 }else if(lNova == lAtual + 2 && tabuleiro[lAtual+1][cAtual].equals(".") && tabuleiro[lNova][cAtual].equals("E")){//tentou comer
@@ -199,6 +218,7 @@ public class Funcoes {
                     if (tabuleiro[lAtual][cNova].equals(".")) {
                         moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     }else{
+                        imprimirMatriz();
                         System.out.println("Jogada inválida. Selecione outra posição!");
                     }
                 }else if(cNova == cAtual + 2 && tabuleiro[lAtual][cAtual+1].equals(".") && tabuleiro[lAtual][cNova].equals("E")){

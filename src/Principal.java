@@ -26,14 +26,13 @@ public class Principal {
 
         System.out.println("Fim do jogo!");
         if (t.getContEmas()<3){
-            System.out.println("Aliens venceram!!!");
-            t.matrizInicial();
+            System.out.println("Aliens venceram\nParabèns!!!!");
         }else if (t.getContAliens() == 0){
-            System.out.println("Emas venceram!!!");
-            t.matrizInicial();
+            System.out.println("Emas venceram\nParabèns!!!!");
         }else{
             System.out.println("Estado do tabuleiro salvo.");
+            Arquivo.gravar(t.salvarTabuleiro(), "meuArq.txt");//fechar
         }
-        Arquivo.gravar(t.salvarTabuleiro(), "meuArq.txt");//fechar
+
     }
 }
