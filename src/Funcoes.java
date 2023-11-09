@@ -73,7 +73,7 @@ public class Funcoes {
     public boolean aliensImoveis(){
         for (int l = 0; l < LINHAS; l++) {
             for (int c = 0; c < COLUNAS; c++) {
-                if (tabuleiro[l][c].equals("A")) {//ate aqui ta certo
+                if (tabuleiro[l][c].equals("A")) {
                     if (l == 0 || tabuleiro[l-1][c].equals("A") || tabuleiro[l-1][c].equals("E")){
                         if (l == 4 || tabuleiro[l+1][c].equals("A") || tabuleiro[l+1][c].equals("E")){
                             if (c == 0 ||tabuleiro[l][c-1].equals("A") || tabuleiro[l][c-1].equals("E")){
@@ -86,7 +86,7 @@ public class Funcoes {
                 }
             }
         }
-        if (contAliens !=0 ){
+        if (contAliens != 0 ){
             contAliens = 2;
         }
         return contAliens == 0; //SE contAliens=0, retorna true (alien perdeu). Se não, retorna false.
@@ -197,7 +197,7 @@ public class Funcoes {
         } else {
             if (lNova != lAtual) { //tentou mudar de linha
                 if (lNova == lAtual + 1 || lNova == lAtual - 1) {
-                    if (tabuleiro[lNova][cAtual].equals(".")){//Moveu para um vazio
+                    if (tabuleiro[lNova][cAtual].equals(".")){  //Moveu para um vazio
                         moverPeca(lAtual, cAtual, lNova, cNova, ".", "A");
                     }else{
                         imprimirMatriz();
